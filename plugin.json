@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "woia-identity",
+  "version": "0.5.0",
+  "description": "Shared Person and Organization identity with scoped aliases and external references",
+  "author": {
+    "name": "Turpial AI Academy",
+    "url": "https://github.com/Turpial-AI-Academy"
+  },
+  "homepage": "https://github.com/Turpial-AI-Academy/woia-identity-agent-plugin",
+  "repository": "https://github.com/Turpial-AI-Academy/woia-identity-agent-plugin",
+  "license": "MIT",
+  "keywords": ["agent-plugin", "woia-identity"]
+}
