@@ -18,11 +18,11 @@ export function begin(state, request, actions, writes){
  return {next:structuredClone(state),read,fingerprint};
 }
 export function finish(context,request,result){
- if(context.read)return {state:context.next,result};
+ if(context.read)return {state:context.next,result:structuredClone(result)};
  context.next.revision++;
  context.next.operations??={};context.next.operations[request.operation_id]={fingerprint:context.fingerprint,result:structuredClone(result)};
  context.next.history??=[];context.next.history.push({action:request.action,target:request.target,operation_id:request.operation_id,evidence:structuredClone(request.evidence),revision:context.next.revision});
- return {state:context.next,result};
+ return {state:context.next,result:structuredClone(result)};
 }
 export function approval(request){const a=request.authority;requireValue(a.approval?.approved===true&&a.approval.principal&&a.approval.principal!==a.actor&&a.approval.payload_digest===digest(request.payload)&&a.approval.policy_revision===a.policy_revision&&a.approval.action===request.action&&a.approval.target===request.target&&a.approval.organization===request.organization&&a.approval.current===true&&!a.approval.revoked,'EXACT_OWNER_APPROVAL_REQUIRED')}
 export function ownKeys(value,allowed){requireValue(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).every(k=>allowed.includes(k)),'UNOWNED_FIELDS')}
