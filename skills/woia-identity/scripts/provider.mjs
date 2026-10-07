@@ -2,7 +2,7 @@ import {begin,finish,requireValue,ownKeys,approval,digest} from './guard.mjs';
 export const actions=["identity.search","identity.read","identity.create","identity.update","identity.alias.link","identity.alias.unlink","identity.external-ref.link","identity.external-ref.unlink","identity.merge","identity.correct"];
 const writes=actions.filter(a=>!["identity.search","identity.read"].includes(a));
 export const initial=organization=>({organization,revision:0,operations:{},history:[],identities:{}});
-export function execute(state,q){const c=begin(state,q,actions,writes);if(c.replay)return {state:c.next,result:c.replay};
+export function execute(state,q){q=structuredClone(q);const c=begin(state,q,actions,writes);if(['identity.create','identity.update','identity.correct'].includes(q.action))requireValue(Object.keys(q.payload??{}).every(k=>q.authority.fields?.includes(k)&&q.authority.source_fields?.includes(k)),'FIELD_SOURCE_AUTHORITY');if(['identity.merge','identity.correct'].includes(q.action)){requireValue(q.authority.department==='Data'&&q.authority.relationship_conflicts_checked===true,'DATA_GOVERNANCE_REQUIRED');approval(q);}  if(c.replay)return {state:c.next,result:c.replay};
  const records=c.next.identities??={};
  const project=record=>Object.fromEntries(Object.entries(record).filter(([k])=>['id','kind','merged_into'].includes(k)||q.authority.fields?.includes(k)));
  if(q.action==='identity.search')return finish(c,q,Object.values(records).filter(r=>!r.merged_into&&q.authority.resources.includes(r.id)&&Object.values(project(r)).some(v=>String(v).toLowerCase().includes(String(q.payload?.query??'').toLowerCase()))).map(project));
