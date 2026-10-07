@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "organization",
+    "action",
+    "target",
+    "authority"
+  ],
+  "properties": {
+    "organization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "enum": [
+        "identity.search",
+        "identity.read",
+        "identity.create",
+        "identity.update",
+        "identity.alias.link",
+        "identity.alias.unlink",
+        "identity.external-ref.link",
+        "identity.external-ref.unlink",
+        "identity.merge",
+        "identity.correct"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object"
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source",
+        "reference",
+        "recorded_at"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "recorded_at": {
+          "type": "string"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "authenticated",
+        "current",
+        "organization",
+        "actor",
+        "policy_revision",
+        "actions",
+        "resources"
+      ],
+      "properties": {
+        "authenticated": {
+          "const": true
+        },
+        "current": {
+          "const": true
+        },
+        "organization": {
+          "type": "string"
+        },
+        "actor": {
+          "type": "string"
+        },
+        "policy_revision": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

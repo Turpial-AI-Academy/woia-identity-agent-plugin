@@ -1,0 +1,25 @@
+{
+  "schema": "dev.woia.provider-manifest/v1",
+  "name": "woia-identity",
+  "capability": "identity",
+  "version": "0.5.0",
+  "origin": "native",
+  "authoring_profile": "thin",
+  "actions": [
+    "identity.search",
+    "identity.read",
+    "identity.create",
+    "identity.update",
+    "identity.alias.link",
+    "identity.alias.unlink",
+    "identity.external-ref.link",
+    "identity.external-ref.unlink",
+    "identity.merge",
+    "identity.correct"
+  ],
+  "support": {
+    "deterministic_contract": "implemented",
+    "storage_adapter": "NOT_QUALIFIED",
+    "external_effects": "unsupported"
+  }
+}

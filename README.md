@@ -40,3 +40,9 @@ mise run ci:fast
 mise run ci:extended
 mise run release:check
 ~~~
+
+## W1 provider implementation
+
+Identity owns Person/Organization attributes, aliases and external refs only. Merge/correct requires Data governance and independent competent confirmation; authenticated accounts, permissions and contextual roles never merge. Source-authorized fields only; no automatic latest-wins reconciliation.
+
+[Portable operation contract](skills/woia-identity/references/contract.md). Import execute/initial from skills/woia-identity/scripts/provider.mjs. No backend or live adapter is qualified. Public fixtures are synthetic; authenticated host must resolve current policies and persist transitions atomically with revision fencing.
