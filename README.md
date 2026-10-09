@@ -15,7 +15,6 @@ The plugin adapts to the repository it operates on without requiring the consume
 ~~~text
 plugin.json
 README.md
-CHANGELOG.md
 LICENSE
 skills/**
 # optional source diagnostic when retained by the repository
@@ -41,7 +40,7 @@ mise run ci:extended
 mise run release:check
 ~~~
 
-## W1 provider implementation
+## provider implementation
 
 Identity owns Person/Organization attributes, aliases and external refs only. Merge/correct requires Data governance and independent competent confirmation; authenticated accounts, permissions and contextual roles never merge. Source-authorized fields only; no automatic latest-wins reconciliation.
 

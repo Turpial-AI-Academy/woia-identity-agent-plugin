@@ -2,12 +2,29 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "SubjectExternalRef command key (organization supplied by authenticated state)",
   "type": "object",
-  "required": ["namespace_id", "object_type", "external_id", "lifecycle_scope"],
+  "required": [
+    "namespace_id",
+    "object_type",
+    "external_id",
+    "lifecycle_scope"
+  ],
   "properties": {
-    "namespace_id": {"type": "string", "minLength": 1},
-    "object_type": {"type": "string", "minLength": 1},
-    "external_id": {"type": "string", "minLength": 1},
-    "lifecycle_scope": {"type": "string", "minLength": 1}
+    "namespace_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "external_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_scope": {
+      "type": "string",
+      "minLength": 1
+    }
   },
   "additionalProperties": false
 }
