@@ -26,7 +26,7 @@ Operation IDs bind action/target/payload/evidence; exact replay returns the orig
 
 Deterministic local provider-domain behavior is implemented. Physical backend persistence, atomic multiworker storage and authenticated host integration are NOT_QUALIFIED; external effects are unsupported. Tests use synthetic state and do not establish Operator E2E or Production Ready.
 
-## Canonical B3 keys
+## Canonical keys
 
 SubjectExternalRef preserves the complete (org_id, namespace_id, object_type, external_id, lifecycle_scope) association; organization comes from authenticated state, not payload. [Command key schema](../assets/external-ref.schema.json). A same external ID in another namespace/object type/lifecycle is a distinct key. Linking an already-owned complete key to another active Subject fails.
 
